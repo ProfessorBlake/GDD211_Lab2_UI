@@ -13,4 +13,9 @@ public class SphereController : MonoBehaviour
 	{
 		transform.localScale = new Vector3(transform.localScale.x, value, transform.localScale.z);
 	}
+
+	public void DropdownHandler(int value)
+	{
+		Debug.Log(value);
+	}
 }
