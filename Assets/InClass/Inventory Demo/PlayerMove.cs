@@ -29,21 +29,23 @@ public class PlayerMove : MonoBehaviour
 		Item hitItem = collision.GetComponent<Item>();
 		if(hitItem != null)
 		{
+			string itemName = hitItem.ItemName;
+
 			// Add item if not in dict
-			if (!itemDict.ContainsKey(collision.gameObject.name))
+			if (!itemDict.ContainsKey(itemName))
 			{
 				GameObject uiItem = Instantiate(UIItemPrefab, Inventory);
 				uiItem.GetComponent<UiItem>().SetDetail(
-					collision.gameObject.name,
+					itemName,
 					hitItem.ItemSprite
 					);
 				uiItemList.Add(uiItem.GetComponent<UiItem>());
-				itemDict.Add(collision.gameObject.name, 1);
+				itemDict.Add(itemName, 1);
 			}
 			else
 			{
-				itemDict[collision.gameObject.name] = itemDict[collision.gameObject.name] + 1;
-				uiItemList.Find(x => x.ItemName == collision.gameObject.name).UpdateCount(itemDict[collision.gameObject.name]);
+				itemDict[itemName] = itemDict[itemName] + 1;
+				uiItemList.Find(x => x.ItemName == itemName).UpdateCount(itemDict[itemName]);
 			}
 		}
 

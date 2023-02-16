@@ -9,6 +9,10 @@ public class Item : MonoBehaviour
 		get { return sprRend.sprite; }
 	}
 
+	public string ItemName { get { return itemName; } }
+
+	[SerializeField] private string itemName;
+
     private SpriteRenderer sprRend;
 
 	private void Start()
