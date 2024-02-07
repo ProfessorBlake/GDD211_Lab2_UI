@@ -6,7 +6,7 @@ using TMPro;
 public class TypeText : MonoBehaviour
 {
 	[SerializeField] private TMP_Text txt;
-    [TextArea(3,10)] [SerializeField] private string message;
+	[TextArea(3, 10)][SerializeField] private string message;
 
 	private int shownIndex;
 
@@ -16,15 +16,18 @@ public class TypeText : MonoBehaviour
 	private void Update()
 	{
 		delay -= Time.deltaTime;
-		if(delay <= 0)
+		if (shownIndex < message.Length)
 		{
-			shownIndex++;
-			txt.text = message.Substring(0, shownIndex);
-			delay = delayReset;
-		}
-		if (Input.GetKey(KeyCode.Space))
-		{
-			shownIndex += 5;
+			if (delay <= 0)
+			{
+				shownIndex++;
+				txt.text = message.Substring(0, shownIndex);
+				delay = delayReset;
+			}
+			if (Input.GetKey(KeyCode.Space))
+			{
+				shownIndex += 5;
+			}
 		}
 	}
 }
